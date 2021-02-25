@@ -1,8 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 
-function App() {
-  return <div></div>;
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    };
+  }
+  render() {
+    return (
+      <div>
+        <ul>
+          <li>good {this.state.good}</li>
+          <li>neutral {this.state.neutral}</li>
+          <li>bad {this.state.bad}</li>
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default App;
