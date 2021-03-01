@@ -5,18 +5,19 @@ const Statistics = props => {
   const statList = Object.entries(props);
   return (
     <ul>
-      {statList.map(prop => {
+      {statList.map(([key, value]) => {
         return (
-          <li key={prop[0]}>
-            {prop[0]}: {prop[1]}
+          <li key={key}>
+            {
+              (key =
+                key === 'positivePercentage'
+                  ? `Positive feedback`
+                  : key[0].toUpperCase() + key.slice(1))
+            }
+            : {value}
           </li>
         );
       })}
-      {/* <li>good {good}</li>
-            <li>neutral {neutral}</li>
-            <li>bad {bad}</li>
-            <li>total {total}</li>
-            <li>Positive feedback {positivePercentage}</li> */}
     </ul>
   );
 };

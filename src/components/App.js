@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
-import Statistics from './Statistics/Statistics';
-import Section from './Section/Section';
-import Notification from './Notification/Notification';
+import FeedbackOptions from './FeedbackOptions';
+import Statistics from './Statistics';
+import Section from './Section';
+import Notification from './Notification';
 
 class App extends Component {
   constructor() {
@@ -14,21 +14,27 @@ class App extends Component {
     };
   }
 
-  onClickGoodHandler = () => {
-    this.setState(prevState => {
-      return { good: prevState.good + 1 };
-    });
-  };
+  // onClickGoodHandler = () => {
+  //   this.setState(prevState => {
+  //     return { good: prevState.good + 1 };
+  //   });
+  // };
 
-  onClickNeutralHandler = () => {
-    this.setState(prevState => {
-      return { neutral: prevState.neutral + 1 };
-    });
-  };
+  // onClickNeutralHandler = () => {
+  //   this.setState(prevState => {
+  //     return { neutral: prevState.neutral + 1 };
+  //   });
+  // };
 
-  onClickBadHandler = () => {
+  // onClickBadHandler = () => {
+  //   this.setState(prevState => {
+  //     return { bad: prevState.bad + 1 };
+  //   });
+  // };
+
+  onFeedbackClickHandler = feedback => {
     this.setState(prevState => {
-      return { bad: prevState.bad + 1 };
+      return { [feedback]: prevState[feedback] + 1 };
     });
   };
 
@@ -45,42 +51,22 @@ class App extends Component {
   };
 
   render() {
+    const { good, neutral, bad } = this.state;
     return (
       <div>
-        {/* <h1>Please leave feedback</h1> */}
-
-        {/* <ul>
-          <li>
-            <button onClick={this.onClickGoodHandler}>good</button>
-          </li>
-          <li>
-            <button onClick={this.onClickNeutralHandler}>neutral</button>
-          </li>
-          <li>
-            <button onClick={this.onClickBadHandler}>bad</button>
-          </li>
-          
-        </ul> */}
         <Section title={'Please leave feedback'}>
           <FeedbackOptions
             options={['good', 'neutral', 'bad']}
-            onLeaveFeedback={[
-              this.onClickGoodHandler,
-              this.onClickNeutralHandler,
-              this.onClickBadHandler,
-            ]}
+            onLeaveFeedback={this.onFeedbackClickHandler}
           />
         </Section>
 
-        {/* <h2>Statistics</h2> */}
         <Section title={'Statistics'}>
-          {this.state.good > 0 ||
-          this.state.neutral > 0 ||
-          this.state.bad > 0 ? (
+          {good > 0 || neutral > 0 || bad > 0 ? (
             <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
+              good={good}
+              neutral={neutral}
+              bad={bad}
               total={this.countTotalFeedback()}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
@@ -88,14 +74,6 @@ class App extends Component {
             <Notification message={'No feedback given'} />
           )}
         </Section>
-
-        {/* <ul>
-          <li>good {this.state.good}</li>
-          <li>neutral {this.state.neutral}</li>
-          <li>bad {this.state.bad}</li>
-          <li>total {this.countTotalFeedback()}</li>
-          <li>Positive feedback {this.countPositiveFeedbackPercentage()}</li>
-        </ul> */}
       </div>
     );
   }
