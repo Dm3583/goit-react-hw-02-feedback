@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Section.scss';
 
 const Section = ({ title, children }) => {
   return (
-    <div>
+    <div className="Section">
       {title && <h1>{title}</h1>}
       {children}
     </div>

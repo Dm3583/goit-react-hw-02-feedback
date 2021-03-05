@@ -1,0 +1,16 @@
+@import 'styles/shared.scss';
+
+.Statistics {
+  @extend %list;
+}
+
+.Statistics__item {
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+}
+
+.Statistics__item + .Statistics__item {
+  margin-bottom: 5px;
+}

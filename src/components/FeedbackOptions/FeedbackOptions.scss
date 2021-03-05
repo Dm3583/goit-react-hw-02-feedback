@@ -1,0 +1,22 @@
+@import 'styles/shared.scss';
+
+.FeedbackOptions {
+  @extend %list;
+  display: flex;
+  padding: 10px;
+}
+
+.FeedbackOptions__item + .FeedbackOptions__item {
+  margin-left: 10px;
+}
+
+.FeedbackOptions__button {
+  @extend %button;
+
+  color: $white;
+  padding: 10px;
+  transition: background-color $timing-function 0.25s;
+  &:hover {
+    background-color: $indigo-accent;
+  }
+}

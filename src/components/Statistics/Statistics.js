@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Statistics.scss';
 
 const Statistics = props => {
   const statList = Object.entries(props);
   return (
-    <ul>
+    <ul className="Statistics">
       {statList.map(([key, value]) => {
         return (
-          <li key={key}>
+          <li className="Statistics__item" key={key}>
             {
               (key =
                 key === 'positivePercentage'
