@@ -5,14 +5,11 @@ import Section from './Section';
 import Notification from './Notification';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      good: 0,
-      neutral: 0,
-      bad: 0,
-    };
-  }
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
 
   handlerOnFeedbackClick = feedback => {
     this.setState(prevState => {
