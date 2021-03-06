@@ -14,24 +14,6 @@ class App extends Component {
     };
   }
 
-  // onClickGoodHandler = () => {
-  //   this.setState(prevState => {
-  //     return { good: prevState.good + 1 };
-  //   });
-  // };
-
-  // onClickNeutralHandler = () => {
-  //   this.setState(prevState => {
-  //     return { neutral: prevState.neutral + 1 };
-  //   });
-  // };
-
-  // onClickBadHandler = () => {
-  //   this.setState(prevState => {
-  //     return { bad: prevState.bad + 1 };
-  //   });
-  // };
-
   onFeedbackClickHandler = feedback => {
     this.setState(prevState => {
       return { [feedback]: prevState[feedback] + 1 };
@@ -39,13 +21,15 @@ class App extends Component {
   };
 
   countTotalFeedback = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
   };
 
   countPositiveFeedbackPercentage = () => {
+    const { good } = this.state;
     const positiveFeedback =
       this.countTotalFeedback() > 0
-        ? (100 / this.countTotalFeedback()) * this.state.good
+        ? (100 / this.countTotalFeedback()) * good
         : 0;
     return Math.round(positiveFeedback) + ' %';
   };
