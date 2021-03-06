@@ -14,7 +14,7 @@ class App extends Component {
     };
   }
 
-  onFeedbackClickHandler = feedback => {
+  handlerOnFeedbackClick = feedback => {
     this.setState(prevState => {
       return { [feedback]: prevState[feedback] + 1 };
     });
@@ -41,7 +41,7 @@ class App extends Component {
         <Section title={'Please leave feedback'}>
           <FeedbackOptions
             options={['good', 'neutral', 'bad']}
-            onLeaveFeedback={this.onFeedbackClickHandler}
+            onLeaveFeedback={this.handlerOnFeedbackClick}
           />
         </Section>
 
